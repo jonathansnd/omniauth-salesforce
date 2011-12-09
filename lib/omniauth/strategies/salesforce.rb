@@ -80,5 +80,9 @@ module OmniAuth
       default_options[:client_options][:site] = 'https://prerellogin.pre.salesforce.com/'
     end
 
+    class CustomURL < OmniAuth::Strategies::Salesforce
+      default_options[:client_options][:site] = 'https://ucsf.my.salesforce.com'
+    end
+    
   end
 end
