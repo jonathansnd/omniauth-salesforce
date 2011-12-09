@@ -81,7 +81,7 @@ module OmniAuth
     end
 
     class CustomURL < OmniAuth::Strategies::Salesforce
-      default_options[:client_options][:site] = 'https://ucsf.my.salesforce.com'
+      default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com/'
     end
     
   end
