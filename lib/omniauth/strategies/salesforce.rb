@@ -21,6 +21,8 @@ module OmniAuth
       def request_phase
         req = Rack::Request.new(@env)
         options.update(req.params)
+        puts '>>>> options <<<<'
+        puts options
         ua = req.user_agent.to_s
         if !options.has_key?(:display)
           mobile_request = ua.downcase =~ Regexp.new(MOBILE_USER_AGENTS)
