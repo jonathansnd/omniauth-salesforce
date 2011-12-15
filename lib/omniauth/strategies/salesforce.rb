@@ -27,6 +27,7 @@ module OmniAuth
           options[:display] = mobile_request ? 'touch' : 'page'
         end
         if options.has_key?(:customurl)
+          puts '>>>> includes custom url'
           default_options[:client_options][:site] = options[:customurl]
         end
         super
@@ -84,7 +85,7 @@ module OmniAuth
     end
 
     class CustomURL < OmniAuth::Strategies::Salesforce
-      default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com/'
+      #default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com/'
     end
     
   end
