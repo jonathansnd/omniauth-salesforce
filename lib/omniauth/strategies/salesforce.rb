@@ -26,6 +26,9 @@ module OmniAuth
           mobile_request = ua.downcase =~ Regexp.new(MOBILE_USER_AGENTS)
           options[:display] = mobile_request ? 'touch' : 'page'
         end
+        if options.has_key?(:customurl)
+          default_options[:client_options][:site] = options[:customurl]
+        end
         super
       end
 
