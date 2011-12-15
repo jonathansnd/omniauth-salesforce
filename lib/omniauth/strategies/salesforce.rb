@@ -22,6 +22,7 @@ module OmniAuth
         req = Rack::Request.new(@env)
         options.update(req.params)
         puts '>>>> options <<<<'
+        puts req.params
         puts options
         ua = req.user_agent.to_s
         if !options.has_key?(:display)
