@@ -9,8 +9,7 @@ module OmniAuth
       option :client_options, {
         :site          => 'https://login.salesforce.com',
         :authorize_url => '/services/oauth2/authorize',
-        :token_url     => '/services/oauth2/token',
-        :ssl => {:ca_path => '/etc/ssl/certs'}
+        :token_url     => '/services/oauth2/token'
       }
       option :authorize_options, [
         :scope,
