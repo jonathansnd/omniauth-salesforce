@@ -20,6 +20,8 @@ module OmniAuth
       
       def request_phase
         req = Rack::Request.new(@env)
+        puts '>>>> req <<<<<'
+        req
         options.update(req.params)
         ua = req.user_agent.to_s
         if !options.has_key?(:display)
@@ -29,6 +31,8 @@ module OmniAuth
         if !options[:customurl].blank?
           options[:client_options][:site] = options[:customurl]
         end
+        puts '>>>> options <<<<'
+        puts options
         super
       end
 
@@ -80,11 +84,11 @@ module OmniAuth
     end
 
     class SalesforcePreRelease < OmniAuth::Strategies::Salesforce
-      default_options[:client_options][:site] = 'https://prerellogin.pre.salesforce.com/'
+      default_options[:client_options][:site] = 'https://prerellogin.pre.salesforce.com'
     end
 
     class CustomURL < OmniAuth::Strategies::Salesforce
-      default_options[:client_options][:site] = 'https://default-custom-domain.my.salesforce.com'
+      default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com'
     end
     
   end
