@@ -90,7 +90,8 @@ module OmniAuth
     end
 
     class CustomUrl < OmniAuth::Strategies::Salesforce
-      default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com'
+      #default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com'
+      default_options[:client_options][:site] = 'https://jricoidptest-developer-edition.my.salesforce.com'
     end
     
   end
