@@ -29,7 +29,7 @@ module OmniAuth
           options[:display] = mobile_request ? 'touch' : 'page'
         end
         if !options[:customurl].blank?
-          options[:client_options][:site] = options[:customurl]
+          options[:client_options][:site] = CGI::escape(options[:customurl])
         else
           options.delete(:customurl)
         end
