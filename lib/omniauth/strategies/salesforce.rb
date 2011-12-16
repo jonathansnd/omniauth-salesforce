@@ -20,21 +20,21 @@ module OmniAuth
       
       def request_phase
         req = Rack::Request.new(@env)
-        puts '>>>> req <<<<<'
-        req
         options.update(req.params)
         ua = req.user_agent.to_s
         if !options.has_key?(:display)
           mobile_request = ua.downcase =~ Regexp.new(MOBILE_USER_AGENTS)
           options[:display] = mobile_request ? 'touch' : 'page'
         end
+        #Look for custom url params in request
         if !options[:customurl].blank?
+          #Override strategy defaults
           CustomUrl.default_options[:client_options][:site] = options[:customurl]
+          #Set site url
           options[:client_options][:site] = options[:customurl]
         end
+        #clean additional parameters from hash
         options.delete(:customurl)
-        puts '>>>> options <<<<'
-        puts options
         super
       end
 
@@ -90,8 +90,7 @@ module OmniAuth
     end
 
     class CustomUrl < OmniAuth::Strategies::Salesforce
-      #default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com'
-      #default_options[:client_options][:site] = 'https://jricoidptest-developer-edition.my.salesforce.com'
+      default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com'
     end
     
   end
