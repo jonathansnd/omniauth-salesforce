@@ -30,6 +30,8 @@ module OmniAuth
         end
         if !options[:customurl].blank?
           options[:client_options][:site] = options[:customurl]
+        else
+          options.delete(:customurl)
         end
         puts '>>>> options <<<<'
         puts options
