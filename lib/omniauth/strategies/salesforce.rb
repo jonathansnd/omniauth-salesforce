@@ -10,7 +10,7 @@ module OmniAuth
         :site          => 'https://login.salesforce.com',
         :authorize_url => '/services/oauth2/authorize',
         :token_url     => '/services/oauth2/token',
-        :ssl => { :verify => false }
+        :ssl => { :verify => OpenSSL::SSL::VERIFY_PEER, :ca_file => '/usr/lib/ssl/certs/ca-certificates.crt' }
       }
       option :authorize_options, [
         :scope,
@@ -18,7 +18,7 @@ module OmniAuth
         :immediate,
         :state
       ]
-
+      
       def request_phase
         req = Rack::Request.new(@env)
         options.update(req.params)
