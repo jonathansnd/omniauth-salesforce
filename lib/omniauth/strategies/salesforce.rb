@@ -29,10 +29,10 @@ module OmniAuth
           options[:display] = mobile_request ? 'touch' : 'page'
         end
         if !options[:customurl].blank?
+          default_options[:client_options][:site] = options[:customurl]
           options[:client_options][:site] = options[:customurl]
-        else
-          options.delete(:customurl)
         end
+        options.delete(:customurl)
         puts '>>>> options <<<<'
         puts options
         super
