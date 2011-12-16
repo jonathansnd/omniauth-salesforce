@@ -31,7 +31,7 @@ module OmniAuth
         end
         if options.has_key?(:customurl)
           puts '>>>> includes custom url'
-          options[:site] = options[:customurl]
+          options[:client_options][:site] = options[:customurl]
         end
         super
       end
