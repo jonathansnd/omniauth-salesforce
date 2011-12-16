@@ -21,16 +21,12 @@ module OmniAuth
       def request_phase
         req = Rack::Request.new(@env)
         options.update(req.params)
-        puts '>>>> options <<<<'
-        puts req.params
-        puts options
         ua = req.user_agent.to_s
         if !options.has_key?(:display)
           mobile_request = ua.downcase =~ Regexp.new(MOBILE_USER_AGENTS)
           options[:display] = mobile_request ? 'touch' : 'page'
         end
         if options.has_key?(:customurl)
-          puts '>>>> includes custom url'
           options[:client_options][:site] = options[:customurl]
         end
         super
@@ -88,7 +84,7 @@ module OmniAuth
     end
 
     class CustomURL < OmniAuth::Strategies::Salesforce
-      #default_options[:client_options][:site] = 'https://ucsf--myaccessdv.cs9.my.salesforce.com/'
+      default_options[:client_options][:site] = 'https://default-custom-domain.my.salesforce.com'
     end
     
   end
