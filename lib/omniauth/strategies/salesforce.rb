@@ -27,15 +27,22 @@ module OmniAuth
           options[:display] = mobile_request ? 'touch' : 'page'
         end
         #Look for custom url params in request
-        if !options[:customurl].blank?
-          #Override strategy defaults
-          CustomUrl.default_options[:client_options][:site] = options[:customurl]
-          #Set site url
-          options[:client_options][:site] = options[:customurl]
+        if options.key?(:customurl)
+        
+          if !options[:customurl].blank?
+            #Override strategy defaults
+            CustomUrl.default_options[:client_options][:site] = options[:customurl]
+            #Set site url
+            options[:client_options][:site] = options[:customurl]
+          end
+          
+          #clean additional parameters from hash
+          options.delete(:customurl)
+
         end
-        #clean additional parameters from hash
-        options.delete(:customurl)
+
         super
+        
       end
 
       uid { raw_info['id'] }
